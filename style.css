@@ -3,14 +3,14 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
-    background-color: #FFFFFF; /* Negro elegante */
+    background-color: #0a0a0a; /* Negro elegante */
     color: #ffffff;
 }
 
 h1, h2, h3 {
 	font-family: 'Playfair Display', serif;
 	font-size: 27px;
-	color: #000000;
+	color: #555555;
 }
 /* Hero con Video de Fondo */
 
@@ -43,8 +43,8 @@ h1, h2, h3 {
 }
 
 .hero-content {
-text-align: center;
-z-index: 1;
+	text-align: center;
+	z-index: 1;
 }
 
 .hero-content h1 {
@@ -97,15 +97,15 @@ z-index: 1;
 /* GRID DE PORTAFOLIO */
 /* Contenedor que agrupa todos los videos */
 .portfolio-grid {
-display: flex;
-flex-direction: column;
-align-items: center;    /* Centra los hijos horizontalmente */
-width: 100%;            /* Ocupa el total del ancho disponible */
-max-width: 100%;        /* Evita que se desborde */
-padding: 40px 0;        /* 40px arriba/abajo, 0 a los lados para no empujar el video */
-gap: 25px;              /* Espacio vertical entre videos */
-background-color: #FFFFFF; /* Negro puro */
-margin: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;    /* Centra los hijos horizontalmente */
+	width: 100%;            /* Ocupa el total del ancho disponible */
+	max-width: 100%;        /* Evita que se desborde */
+	padding: 40px 0;        /* 40px arriba/abajo, 0 a los lados para no empujar el video */
+	gap: 25px;              /* Espacio vertical entre videos */
+	background-color: #FFFFFF; /* Negro puro */
+	margin: 0;
 }
 
 /* El contenedor del video individual */
@@ -144,9 +144,9 @@ margin: 0;
    ============================================ */
 
 .testimonials {
-    background-color: #FFFFFF;
-    padding: 20px 20px 100px 20px; /* Más aire arriba y abajo */
-    text-align: center;
+	background-color: #FFFFFF;
+	padding: 20px 20px 100px 20px; /* Más aire arriba y abajo */
+	text-align: center;
 }
 
 .testimonials-container {
@@ -156,7 +156,7 @@ margin: 0;
     gap: 60px; /* Más espacio entre las parejas */
     max-width: 1400px;
     margin: 0 auto;
-padding: 50px 20px 100px 20px;
+	padding: 50px 20px 100px 20px;
 }
 
 .testimonial-card {
@@ -192,7 +192,7 @@ padding: 50px 20px 100px 20px;
 	font-family: 'Montserrat', sans-serif;
 	font-size: 15px;      /* Tamaño legible */
 	line-height: 1.8;     /* Espaciado para look de revista */
-	color: #363636;       /* Gris claro elegante */
+	color: #393939;       /* Gris claro elegante */
 	max-width: 300px;     /* Para que el texto no se desparrame */
 	margin: 0 auto 20px auto;
 	font-style: italic;   /* Estilo de cita */
@@ -204,7 +204,7 @@ padding: 50px 20px 100px 20px;
 	font-size: 18px;      /* Tamaño de los nombres */
 	letter-spacing: 3px;  /* Aire entre letras Premium */
 	text-transform: uppercase;
-	color: #363636;
+	color: #393939;
 	font-weight: 400;     /* No muy negrita para que sea elegante */
 }
 
@@ -406,3 +406,59 @@ padding: 50px 20px 100px 20px;
 }
 
 /* Estilo del Nombre/Logo */
+.brand a {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    letter-spacing: 6px;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+/* Menú de Navegación */
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 35px; /* Espacio entre About, Contacto e Idiomas */
+}
+
+.nav-link {
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.7;
+    transition: 0.3s ease;
+}
+
+.nav-link:hover {
+    opacity: 1;
+}
+
+/* Selector de Idiomas */
+.lang-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #fff;
+}
+
+.lang {
+    opacity: 0.5;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.lang.active {
+    opacity: 1;
+    font-weight: bold;
+}
+
+.divider {
+    opacity: 0.3;
+}
