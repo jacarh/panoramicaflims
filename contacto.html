@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inquiry | Panorámica Films</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="contact-page">
+    
+    <header class="main-header">
+        <div class="header-container">
+            <div class="brand">
+                <a href="index.html">PANORÁMICA</a>
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html#about" class="nav-link">NOSOTROS</a>
+                <a href="contacto.html" class="nav-link">CONTACTO</a>
+                <div class="lang-selector">
+                    <span class="lang active">ES</span>
+                    <span class="divider">|</span>
+                    <span class="lang">EN</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="contact-container">
+        <div class="contact-header">
+            <h1>BOOK THE DATE</h1>
+            <p>Cuéntanos más de cómo imaginas tu boda.</p>
+        </div>
+
+        <form name="contacto-panoramica" method="POST" data-netlify="true" action="success.html" class="booking-form">
+            
+            <div class="form-group">
+                <div class="input-wrapper">
+                    <label>NOMBRES DE LA PAREJA</label>
+                    <input type="text" name="nombres_pareja" required>
+                </div>
+                <div class="input-wrapper">
+                    <label>NÚMERO DE CONTACTO</label>
+                    <input type="tel" name="telefono" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-wrapper">
+                    <label>E-MAIL</label>
+                    <input type="email" name="email" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-wrapper">
+                    <label>FECHA DEL EVENTO</label>
+                    <input type="date" name="fecha_evento" required>
+                </div>
+                <div class="input-wrapper">
+                    <label>HORA DE LA CEREMONIA</label>
+                    <input type="time" name="hora_ceremonia">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-wrapper">
+                    <label>LUGAR DE LA CEREMONIA</label>
+                    <input type="text" name="lugar_ceremonia">
+                </div>
+                <div class="input-wrapper">
+                    <label>LUGAR DE RECEPCIÓN</label>
+                    <input type="text" name="lugar_recepcion">
+                </div>
+            </div>
+
+            <div class="form-group-full">
+                <label>¿QUÉ LUGAR OCUPA EL VIDEO EN LOS RECUERDOS DE SU BODA?</label>
+                <textarea name="importancia_video" rows="3" placeholder="Para nosotros es..."></textarea>
+            </div>
+
+            <div class="checkbox-group">
+                <p>ESTAMOS INTERESADOS EN EL VIDEO DE:</p>
+                <div class="checkbox-list">
+                    <label><input type="checkbox" name="servicios" value="Boda"> Boda</label>
+                    <label><input type="checkbox" name="servicios" value="Eventos Adicionales"> Eventos adicionales</label>
+                    <label><input type="checkbox" name="servicios" value="Compromiso"> Sesión de compromiso</label>
+                    <label><input type="checkbox" name="servicios" value="Pareja"> Sesión de pareja</label>
+                    <label><input type="checkbox" name="servicios" value="Otro"> Otro</label>
+                </div>
+            </div>
+
+            <div class="checkbox-group">
+                <p>ESTILO DE LA CEREMONIA:</p>
+                <div class="checkbox-list">
+                    <label><input type="radio" name="estilo_ceremonia" value="Simbolica"> Simbólica</label>
+                    <label><input type="radio" name="estilo_ceremonia" value="Religiosa"> Religiosa</label>
+                    <label><input type="radio" name="estilo_ceremonia" value="LGBTQ+"> LGTB Q+</label>
+                </div>
+            </div>
+
+            <div class="checkbox-group">
+                <p>¿CÓMO TE ENTERASTE DE NOSOTROS?</p>
+                <div class="checkbox-list">
+                    <label><input type="radio" name="origen" value="Planner"> Planner</label>
+                    <label><input type="radio" name="origen" value="Amigo/Familia"> Friend/Family</label>
+                    <label><input type="radio" name="origen" value="Instagram"> Instagram</label>
+                    <label><input type="radio" name="origen" value="TikTok"> TikTok</label>
+                    <label><input type="radio" name="origen" value="Google"> Google</label>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">ENVIAR</button>
+        </form>
+    </section>
+
+    <footer class="main-footer">
+        <div class="social-container">
+            <a href="https://www.instagram.com/panoramicaa_/" target="_blank" class="social-icon">
+                <img src="assets/img/Icon_IG.svg" alt="Instagram Panormica">
+            </a>
+            <a href="https://www.tiktok.com/@panoramicaa?lang=en" target="_blank" class="social-icon">
+                <img src="assets/img/Icon_Tt.svg" alt="TikTok Panormica">
+            </a>
+        </div>
+        <p class="copyright">COPYRIGHT © 2026 PANORMICA FILMS. TODOS LOS DERECHOS RESERVADOS.</p>
+    </footer>
+
+    <a href="https://wa.me/573108432193" class="whatsapp-btn" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Contactar a Panormica">
+    </a>
+
+</body>
+</html>

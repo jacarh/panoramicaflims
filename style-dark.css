@@ -1,0 +1,462 @@
+/* Configuración General */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #0a0a0a; /* Negro elegante */
+    color: #ffffff;
+}
+
+h1, h2, h3 {
+	font-family: 'Playfair Display', serif;
+	font-size: 27px;
+}
+/* Hero con Video de Fondo */
+
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.hero-overlay {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.4); /* Capa oscura para legibilidad */
+    width: 100%;
+    height: 100%;
+}
+
+.hero-content {
+	text-align: center;
+	z-index: 1;
+}
+
+.hero-content h1 {
+	font-size: 1rem;
+	font-style: italic;
+	font-weight: 400;
+}
+/* CONTROL DEL LOGO HERO */
+.hero-logo {
+    width: 100%;           /* Que intente ocupar su espacio */
+    max-width: 500px;      /* Pero que nunca supere los 500px en PC */
+    height: auto;          /* Mantiene la proporción */
+    display: block;        /* Lo trata como un bloque sólido */
+    margin: 0 auto 20px;   /* Centrado horizontal y aire abajo */
+    z-index: 10;           /* Asegura que esté por encima de la capa oscura */
+}
+
+/* Ajuste para que en celulares no toque los bordes */
+@media (max-width: 768px) {
+    .hero-logo {
+        max-width: 80%;    /* En móvil, que use máximo el 80% del ancho del cel */
+    }
+}
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column; /* Alinea logo y menú uno sobre otro */
+        padding: 15px 10px;
+        gap: 10px; /* Da espacio entre el logo y los links */
+    }
+
+    .nav-menu {
+        width: 100%;
+        justify-content: center; /* Centra los enlaces */
+        gap: 15px; /* Espacio cómodo entre NOSOTROS, CONTACTO y ES|EN */
+        flex-wrap: wrap; /* Si no caben, bajan a la siguiente línea sin romperse */
+    }
+
+    .brand a {
+        font-size: 1.2rem; /* Achica un poco el logo para que no ocupe tanto */
+        letter-spacing: 4px;
+    }
+
+    .nav-link {
+        font-size: 0.8rem; /* Links más pequeños y delicados */
+        letter-spacing: 2px;
+    }
+}
+
+/* GRID DE PORTAFOLIO */
+/* Contenedor que agrupa todos los videos */
+.portfolio-grid {
+	display: flex;
+	flex-direction: column;
+	align-items: center;    /* Centra los hijos horizontalmente */
+	width: 100%;            /* Ocupa el total del ancho disponible */
+	max-width: 100%;        /* Evita que se desborde */
+	padding: 40px 0;        /* 40px arriba/abajo, 0 a los lados para no empujar el video */
+	gap: 25px;              /* Espacio vertical entre videos */
+	background-color: 000000; /* Negro puro */
+	margin: 0;
+}
+
+/* El contenedor del video individual */
+.video-container {
+    width: 90%;             /* Deja un 5% de margen a cada lado para que no pegue al borde físico */
+    max-width: 850px;       /* Tamaño máximo para que en PC se vea elegante */
+    margin: 0 auto;         /* El "ancla" que garantiza el centrado horizontal */
+    aspect-ratio: 16 / 9;   /* Mantiene la proporción de cine */
+    position: relative;
+    background: #000;
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+/* --- Ajustes exclusivos para Pantallas Grandes (PC) --- */
+@media (min-width: 1024px) {
+    .portfolio-grid {
+        gap: 80px;          /* Más espacio entre videos para que respire el diseño */
+        padding: 50px 0;    /* Más aire arriba y abajo */
+    }
+
+    .video-container {
+        width: 100%;         /* Aumentamos del 90% al 70% del ancho total (pero de una pantalla mucho más grande) */
+        max-width: 1400px;  /* Le damos un techo más alto para que brillen los detalles */
+        /*box-shadow: 0 20px 50px rgba(0,0,0,0.8); /* Una sombra más profunda para dar profundidad */
+    }
+}
+/* ============================================
+           SOCIAL PROOF / TESTIMONIOS
+   ============================================ */
+
+.testimonials {
+    background-color: #000;
+    padding: 20px 20px 100px 20px; /* Más aire arriba y abajo */
+    text-align: center;
+}
+
+.testimonials-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 60px; /* Más espacio entre las parejas */
+    max-width: 1400px;
+    margin: 0 auto;
+	padding: 50px 20px 100px 20px;
+}
+
+.testimonial-card {
+    flex: 1;
+    min-width: 320px; 
+    max-width: 400px; /* Limitamos el ancho de la columna para que no se pierda el centrado */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* FOTO ORIGINAL: Aquí controlas el tamaño base */
+.couple-img {
+    width: 220px;        /* Tamaño ideal para que se vea imponente */
+    height: 220px;       
+    object-fit: cover;
+    border-radius: 50%;
+    filter: grayscale(100%); 
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Transición más suave */
+    margin-bottom: 30px;
+    border: 0px solid rgba(255,255,255,0.1); /* Un borde sutil */
+}
+
+/* EFECTO HOVER: Crece de forma elegante, no exagerada */
+.testimonial-card:hover .couple-img {
+    transform: scale(1.2); /* Crece un poquito, lo justo para dar vida */
+    filter: grayscale(0%);
+    border-color: rgba(255,255,255,0.5);
+}
+
+/* FUENTE DEL TESTIMONIO (La Cita) */
+.quote {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;      /* Tamaño legible */
+    line-height: 1.8;     /* Espaciado para look de revista */
+    color: #bbbbbb;       /* Gris claro elegante */
+    max-width: 300px;     /* Para que el texto no se desparrame */
+    margin: 0 auto 20px auto;
+    font-style: italic;   /* Estilo de cita */
+}
+
+/* FUENTE DE LOS NOMBRES */
+.couple-names {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;      /* Tamaño de los nombres */
+    letter-spacing: 3px;  /* Aire entre letras Premium */
+    text-transform: uppercase;
+    color: #ffffff;
+    font-weight: 400;     /* No muy negrita para que sea elegante */
+}
+
+/* Ajuste para móviles: Fotos un poco más pequeñas para que quepan bien */
+@media (max-width: 768px) {
+    .couple-img {
+        width: 180px;
+        height: 180px;
+    }
+    .testimonials-container {
+        gap: 50px;
+    }
+}
+
+/* FOOTER */
+.main-footer {
+    background-color: #000; /* Fondo negro profundo */
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.social-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Espacio entre los dos iconos */
+    margin-bottom: 30px;
+}
+
+.social-icon img {
+    width: 30px; /* Tamaño ideal para que no se vean gigantes */
+    height: auto;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    /* Si tus SVG son negros, esta línea los vuelve blancos mágicamente: */
+    filter: invert(1); 
+}
+
+.social-icon:hover img {
+    transform: scale(1.1); /* Se agrandan un poquito al pasar el mouse */
+    opacity: 0.7;
+}
+
+.copyright {
+    color: #666;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+/* BOTON WAPP */
+/* Estilo del botón de WhatsApp */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #25d366;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 1000; /* Siempre por encima de todo */
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+    transform: scale(1.1);
+}
+
+.whatsapp-btn img {
+    width: 35px;
+    height: 35px;
+}
+
+/* En móviles lo hacemos un poquito más pequeño para que no tape los videos */
+@media (max-width: 768px) {
+    .whatsapp-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+    }
+}
+/* ============================================
+               PÁGINA DE CONTACTO
+   ============================================ */
+
+/* Esto asegura que el fondo sea negro y el texto blanco */
+.contact-page {
+    background-color: #0a0a0a !important;
+    color: #ffffff !important;
+    min-height: 100vh;
+    padding: 80px 20px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Alineación de los grupos (Nombre/Teléfono, etc.) */
+.form-group {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 25px;
+}
+
+/* El Wrapper: acomoda el label arriba del input */
+.input-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.input-wrapper label, .form-group-full label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #888; /* Gris elegante */
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+/* Diseño de los inputs (solo la línea inferior) */
+.contact-page input:not([type="checkbox"]):not([type="radio"]), 
+.contact-page textarea {
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid #ffffff !important;
+    color: #ffffff !important;
+    padding: 10px 0 !important;
+    font-size: 14px;
+    outline: none;
+    border-radius: 0;
+}
+
+/* El botón ENVIAR */
+.submit-btn {
+    width: 100%;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: none;
+    padding: 20px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    cursor: pointer;
+    margin-top: 40px;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #cccccc !important;
+}
+
+/* Responsive para celular: pone un campo debajo del otro */
+@media (max-width: 768px) {
+    .form-group {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+/* Ajuste de márgenes y ancho para que respire */
+.contact-container {
+    padding: 120px 40px; /* Más espacio arriba y a los lados */
+    max-width: 700px;    /* Lo estrechamos un poco para que sea más fácil de leer */
+    margin: 0 auto;      /* Lo centra perfectamente en la pantalla */
+}
+
+/* Espaciado extra entre la cabecera y el inicio del formulario */
+.contact-header {
+    margin-bottom: 80px; 
+    text-align: center;
+}
+
+/* Separación entre los bloques de preguntas */
+.form-group, .form-group-full, .checkbox-group {
+    margin-bottom: 45px; 
+}
+
+/* Ajuste para que las líneas de texto no se peguen al borde en móviles */
+@media (max-width: 480px) {
+    .contact-container {
+        padding: 60px 25px; /* Un poco menos en móvil para no perder espacio real */
+    }
+}
+/* Contenedor principal del Header */
+.main-header {
+    position: absolute; /* Para que flote sobre la imagen del Hero */
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 0;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; /* Logo a la izquierda, menú a la derecha */
+    align-items: center;
+    padding: 0 5%;
+}
+
+/* Estilo del Nombre/Logo */
+.brand a {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    letter-spacing: 6px;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+/* Menú de Navegación */
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 35px; /* Espacio entre About, Contacto e Idiomas */
+}
+
+.nav-link {
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.7;
+    transition: 0.3s ease;
+}
+
+.nav-link:hover {
+    opacity: 1;
+}
+
+/* Selector de Idiomas */
+.lang-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #fff;
+}
+
+.lang {
+    opacity: 0.5;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.lang.active {
+    opacity: 1;
+    font-weight: bold;
+}
+
+.divider {
+    opacity: 0.3;
+}
