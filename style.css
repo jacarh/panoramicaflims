@@ -10,7 +10,7 @@ body {
 h1, h2, h3 {
 	font-family: 'Playfair Display', serif;
 	font-size: 20px;
-	color: #55555;
+	color: #555555;
 }
 /* Hero con Video de Fondo */
 
@@ -96,7 +96,7 @@ h1, h2, h3 {
     text-decoration: none;
     
     /* El truco del centrado perfecto con tracking */
-    letter-spacing: 0px; 
+    letter-spacing: 0.1px; 
     text-indent: 12px; /* Esto compensa el espacio de la última letra */
     color: #ffffff;
     display: inline-block;
@@ -243,28 +243,6 @@ h1, h2, h3 {
 /* ============================================
                 GRID DE PORTAFOLIO
    ============================================ */
-/* Contenedor que agrupa todos los videos */
-.portfolio-grid {
-	display: flex;
-	flex-direction: column;
-	align-items: center;    /* Centra los hijos horizontalmente */
-	width: 100%;            /* Ocupa el total del ancho disponible */
-	max-width: 100%;        /* Evita que se desborde */
-	padding: 40px 0;        /* 40px arriba/abajo, 0 a los lados para no empujar el video */
-	gap: 10px;              /* Espacio vertical entre videos */
-	background-color: #FFFFFF; /* Negro puro */
-	margin: 0;
-}
-
-/* El contenedor del video individual */
-.video-container {
-    width: 90%;             /* Deja un 5% de margen a cada lado para que no pegue al borde físico */
-    max-width: 850px;       /* Tamaño máximo para que en PC se vea elegante */
-    margin: 0 auto;         /* El "ancla" que garantiza el centrado horizontal */
-    aspect-ratio: 16 / 9;   /* Mantiene la proporción de cine */
-    position: relative;
-    background: #000;
-}
 
 .video-container iframe {
     width: 100%;
@@ -349,84 +327,110 @@ h1, h2, h3 {
         font-size: 28px !important;
     }
 }
+/* --- CONFIGURACIÓN COMPARTIDA --- */
+.profile {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px; /* Aquí controlas la cercanía general */
+    align-items: center;
+    margin-bottom: 120px;
+}
+
+/* --- BLOQUE ALEJO (Texto a la izquierda, mira a la derecha) --- */
+.profile.alejo .profile-info {
+    text-align: left;
+    padding-right: 20px; /* Se acerca a su foto */
+}
+
+/* --- BLOQUE CAMILA (Texto a la derecha, mira a la izquierda) --- */
+.profile.camila .profile-info {
+    text-align: right;
+    padding-left: 20px; /* Se acerca a su foto */
+}
 /* ============================================
            SOCIAL PROOF / TESTIMONIOS
    ============================================ */
 
 .testimonials {
-	background-color: #FFFFFF;
-	padding: 20px 20px 100px 20px; /* Más aire arriba y abajo */
-	text-align: center;
+    background-color: #FFFFFF;
+    padding: 80px 20px;
+    text-align: center;
 }
 
 .testimonials-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 60px; /* Más espacio entre las parejas */
-    max-width: 1400px;
+    gap: 60px;
+    max-width: 1200px;
     margin: 0 auto;
-	padding: 50px 20px 100px 20px;
 }
 
 .testimonial-card {
     flex: 1;
-    min-width: 320px; 
-    max-width: 400px; /* Limitamos el ancho de la columna para que no se pierda el centrado */
+    min-width: 300px;
+    max-width: 350px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* FOTO ORIGINAL: Aquí controlas el tamaño base */
 .couple-img {
-    width: 220px;        /* Tamaño ideal para que se vea imponente */
-    height: 220px;       
+    width: 200px;
+    height: 200px;
     object-fit: cover;
     border-radius: 50%;
-    filter: grayscale(100%); 
-    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Transición más suave */
-    margin-bottom: 30px;
-    border: 0px solid rgba(255,255,255,0.1); /* Un borde sutil */
+    filter: grayscale(100%);
+    transition: all 0.6s ease;
+    margin-bottom: 25px;
 }
 
-/* EFECTO HOVER: Crece de forma elegante, no exagerada */
+/* EFECTO HOVER */
 .testimonial-card:hover .couple-img {
-    transform: scale(1.2); /* Crece un poquito, lo justo para dar vida */
+    transform: scale(1.05);
     filter: grayscale(0%);
-    border-color: rgba(255,255,255,0.5);
 }
 
-/* FUENTE DEL TESTIMONIO (La Cita) */
-.quote {
-	font-family: 'Montserrat', sans-serif;
-	font-size: 15px;      /* Tamaño legible */
-	line-height: 1.8;     /* Espaciado para look de revista */
-	color: #393939;       /* Gris claro elegante */
-	max-width: 300px;     /* Para que el texto no se desparrame */
-	margin: 0 auto 20px auto;
-	font-style: italic;   /* Estilo de cita */
-}
-
-/* FUENTE DE LOS NOMBRES */
+/* 1. EL NOMBRE (AHORA ARRIBA) */
 .couple-names {
-	font-family: 'Playfair Display', serif;
-	font-size: 18px;      /* Tamaño de los nombres */
-	letter-spacing: 3px;  /* Aire entre letras Premium */
-	text-transform: uppercase;
-	color: #393939;
-	font-weight: 400;     /* No muy negrita para que sea elegante */
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    font-weight: 400;
+    margin-bottom: 15px; /* Espacio con la cita */
 }
 
-/* Ajuste para móviles: Fotos un poco más pequeñas para que quepan bien */
+/* 2. LA CITA (AHORA ABAJO) */
+.quote {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #666666;
+    font-style: italic;
+    margin: 0;
+    max-width: 280px;
+}
+
+/* Ajuste móvil para que las fotos no se vean gigantes */
 @media (max-width: 768px) {
     .couple-img {
-        width: 180px;
-        height: 180px;
+        width: 160px;
+        height: 160px;
     }
     .testimonials-container {
-        gap: 50px;
+        gap: 40px;
     }
+}
+
+.testimonials h2 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 24px;
+    margin-bottom: 40px;
+    color: #000;
 }
 
 /* ============================================
@@ -492,12 +496,12 @@ h1, h2, h3 {
 }
 
 /* En móviles lo hacemos un poquito más pequeño para que no tape los videos */
-@media (max-width: 768px) {
+@media (max-width: 480px) {
     .whatsapp-btn {
-        bottom: 20px;
-        right: 20px;
-        width: 50px;
-        height: 50px;
+        bottom: 15px;
+        right: 15px;
+        width: 45px;
+        height: 45px;
     }
 }
 /* ============================================
@@ -619,11 +623,10 @@ h1, h2, h3 {
 .lang-selector {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px; /* Un poco más de aire */
     font-family: 'Montserrat', sans-serif;
-    font-size: 11px;
+    font-size: 10px;
     letter-spacing: 1px;
-    color: #fff;
 }
 
 .lang {
@@ -719,6 +722,7 @@ h1, h2, h3 {
     font-weight: 400;
     margin-bottom: 50px;
     text-align: center;
+	
 }
 
 .intro-text {
@@ -772,7 +776,7 @@ h1, h2, h3 {
 
 /* Ajuste para que la letra capital no rompa el centrado si decides usarla */
 .intro-text p:first-of-type::first-letter {
-    float: none; 
+    float: left; 
     display: block;
     font-size: 5rem;
     margin-bottom: 10px;
@@ -855,22 +859,25 @@ h1, h2, h3 {
     text-align: center;
     margin-bottom: 80px;
     letter-spacing: 2px;
-    font-style: italic;
+    font-style: normal;
+	font-weight: 400;
+	text-transform: uppercase;
 }
 
 .profile {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 100px;
+    gap: 50px;
     align-items: center;
     margin-bottom: 120px;
+	
 }
 
 .profile h4 {
     font-family: var(--font-serif);
     font-size: 24px;
     margin-bottom: 20px;
-    color: var(--text);
+    color: var(--text-main);
 }
 .about-footer {
     text-align: center;    /* Centra el texto (h3) y el párrafo (p) */
@@ -891,6 +898,8 @@ h1, h2, h3 {
     font-size: 32px;       /* El tamaño que ajustamos antes */
     margin-bottom: 15px;
     display: block;        /* Asegura que se comporte como bloque para centrarse */
+	text-transform: uppercase;
+	font-weight: 400;
 }
 
 .about-footer p {
@@ -906,6 +915,33 @@ h1, h2, h3 {
     font-family: var(--font-serif);
     font-size: 24px;
     margin-bottom: 20px;
+	
+}
+/* Esto ajusta el contenedor de texto de Camila */
+.profile.camila .profile-info {
+    text-align: right; /* Alinea el h4 (título) */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* ¡ESTA ES LA CLAVE! Empuja todo hacia la derecha */
+    padding-right: 40px; /* Aquí controlas qué tan cerca queda de la foto */
+	
+}
+
+/* Esto ajusta el párrafo de Camila */
+.profile.camila .profile-info p {
+    text-align: right;
+    max-width: 450px; /* Evita que las líneas sean muy largas */
+    margin-right: 0;  /* Asegura que no tenga margen a la derecha */
+    margin-left: auto; /* Empuja el bloque de texto contra el borde derecho */
+}
+.profile-info h4 {
+    text-transform: uppercase; /* ¡Con la 's'! */
+    letter-spacing: 2px;       /* Un toque extra de elegancia */
+	font-size: 80px;
+	text-transform: uppercase;  /* Mayúsculas corregidas */
+    letter-spacing: 4px;        /* Espaciado entre letras pro */
+    margin-bottom: 20px;
+    font-weight: 400;
 }
 /* --- RESPONSIVE PARA MÓVIL --- */
 
@@ -950,5 +986,36 @@ h1, h2, h3 {
     .parallax-photo {
         padding-top: 100% !important; /* Más cuadrada para que no ocupe toda la pantalla */
     }
+	/* 1. Ajustamos el tamaño del nombre para que no se desborde */
+    .profile-info h4 {
+        font-size: 24px !important; /* Un tamaño más seguro para celulares */
+        letter-spacing: 2px;        /* Reducimos un poco el tracking */
+        text-align: center;         /* Centrado se ve mejor en vertical */
+        margin-bottom: 15px;
+        width: 100%;                /* Ocupa todo el ancho disponible */
+    }
+
+    /* 2. Ajustamos el cuerpo de texto para que no se desplace */
+    .profile.camila .profile-info,
+    .profile.alejo .profile-info {
+        align-items: center;        /* Centramos el bloque en móvil */
+        text-align: center;         /* Texto centrado para lectura vertical */
+        padding: 0 20px;            /* Margen de seguridad a los lados */
+    }
+
+    .profile.camila .profile-info p,
+    .profile.alejo .profile-info p {
+        text-align: center;         /* El párrafo también centrado */
+        max-width: 100%;            /* Que use todo el ancho del cel */
+        margin: 0 auto !important;  /* Centrado perfecto */
+        font-size: 14px;            /* Un pelín más pequeño para legibilidad */
+    }
+
+    /* 3. Evitamos que Alejandro se salga */
+    .profile {
+        grid-template-columns: 1fr !important; /* Una sola columna */
+        overflow: hidden;                      /* Evita scroll horizontal */
+    }
+}
 	
 }
