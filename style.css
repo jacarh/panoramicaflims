@@ -1,0 +1,954 @@
+/* Configuración General */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #0a0a0a; /* Negro elegante */
+    color: #ffffff;
+}
+
+h1, h2, h3 {
+	font-family: 'Playfair Display', serif;
+	font-size: 20px;
+	color: #55555;
+}
+/* Hero con Video de Fondo */
+
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.hero-overlay {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.4); /* Capa oscura para legibilidad */
+    width: 100%;
+    height: 100%;
+}
+
+.hero-content {
+	text-align: center;
+	z-index: 1;
+	transition: opacity 0.1s linear; 
+    will-change: opacity;
+}
+
+.hero-content h1 {
+	font-size: 1rem;
+	font-style: italic;
+	font-weight: 400;
+	color: #FFFFFF;
+}
+/* ============================================
+                      HEADER
+   ============================================ */
+
+@font-face {
+    font-family: 'The Seasons';
+    src: url('fonts/theseasons.otf') format('opentype');
+}
+
+.main-header {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    z-index: 9999;
+    height: auto; 
+    padding: 30px 0 20px 0; 
+    
+    /* CONTROL TOTAL DE CENTRADO */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    
+    transition: all 0.3s ease;
+}
+
+/* EL LOGO: THE SEASONS */
+.brand {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.brand a {
+    font-family: 'The Seasons', serif !important;
+    font-size: 25px;
+    text-transform: uppercase;
+    text-decoration: none;
+    
+    /* El truco del centrado perfecto con tracking */
+    letter-spacing: 0px; 
+    text-indent: 12px; /* Esto compensa el espacio de la última letra */
+    color: #ffffff;
+    display: inline-block;
+}
+
+/* MENÚ DE NAVEGACIÓN */
+
+.nav-menu {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 40px;
+    width: 100%;
+}
+
+.nav-link, .lang, .divider {
+    font-family: 'Montserrat', sans-serif;
+	color: #ffffff;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+/* --- COLORES DINÁMICOS --- */
+
+/* Versión Index (Transparente sobre video) */
+.header-transparent {
+    background-color: transparent !important;
+}
+.header-transparent .brand a,
+.header-transparent .nav-link,
+.header-transparent .lang,
+.header-transparent .divider {
+    color: #ffffff !important;
+}
+
+/* Versión Páginas (Blanco Sólido) */
+.header-solid {
+    background-color: #ffffff !important;
+    border-bottom: 1px solid #f2f2f2;
+}
+.header-solid .brand a,
+.header-solid .nav-link,
+.header-solid .lang,
+.header-solid .divider {
+    color: #000000 !important;
+}
+
+/* AJUSTE MÓVIL */
+
+@media (max-width: 768px) {
+    /* 1. Aseguramos que el contenedor de la intro no limite el ancho de la foto */
+    .about-intro {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    /* 2. Hacemos que la máscara de la foto ocupe el 100% sin márgenes */
+    .about-intro .image-mask.parallax-photo {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding-top: 150% !important; 
+    }
+
+    /* 3. El texto de la intro sí debe mantener margen para no tocar los bordes */
+    .intro-content-wrapper, .intro-text {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+
+/* Este es el estado del header cuando "aterriza" en la zona blanca */
+.main-header.scrolled {
+    background-color: #000000 !important; /* Fondo negro sólido */
+    padding: 15px 0 10px 0; /* Se hace un poco más delgado al bajar (más Pro) */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* Forzamos a que todo lo de adentro sea blanco cuando tenga la clase 'scrolled' */
+.main-header.scrolled .brand a,
+.main-header.scrolled .nav-link,
+.main-header.scrolled .lang,
+.main-header.scrolled .divider {
+    color: #ffffff !important;
+}
+
+/* Suavizamos la transición para que no sea un golpe seco */
+.main-header {
+    transition: background-color 0.4s ease, padding 0.4s ease !important;
+}
+
+
+
+/* ============================================
+              CONTROL DEL LOGO HERO
+   ============================================ */
+.hero-logo {
+    width: 100%;           /* Que intente ocupar su espacio */
+    max-width: 500px;      /* Pero que nunca supere los 500px en PC */
+    height: auto;          /* Mantiene la proporción */
+    display: block;        /* Lo trata como un bloque sólido */
+    margin: 0 auto 20px;   /* Centrado horizontal y aire abajo */
+    z-index: 10;           /* Asegura que esté por encima de la capa oscura */
+	
+}
+
+
+/* Ajuste para que en celulares no toque los bordes */
+@media (max-width: 768px) {
+    .hero-logo {
+        max-width: 80%;    /* En móvil, que use máximo el 80% del ancho del cel */
+    }
+}
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column; /* Alinea logo y menú uno sobre otro */
+        padding: 15px 10px;
+        gap: 10px; /* Da espacio entre el logo y los links */
+    }
+
+    .nav-menu {
+        width: 100%;
+        justify-content: center; /* Centra los enlaces */
+        gap: 15px; /* Espacio cómodo entre NOSOTROS, CONTACTO y ES|EN */
+        flex-wrap: wrap; /* Si no caben, bajan a la siguiente línea sin romperse */
+    }
+
+    .brand a {
+        font-size: 1.2rem; /* Achica un poco el logo para que no ocupe tanto */
+        letter-spacing: 4px;
+    }
+
+    .nav-link {
+        font-size: 0.8rem; /* Links más pequeños y delicados */
+        letter-spacing: 2px;
+    }
+}
+
+/* ============================================
+                GRID DE PORTAFOLIO
+   ============================================ */
+/* Contenedor que agrupa todos los videos */
+.portfolio-grid {
+	display: flex;
+	flex-direction: column;
+	align-items: center;    /* Centra los hijos horizontalmente */
+	width: 100%;            /* Ocupa el total del ancho disponible */
+	max-width: 100%;        /* Evita que se desborde */
+	padding: 40px 0;        /* 40px arriba/abajo, 0 a los lados para no empujar el video */
+	gap: 10px;              /* Espacio vertical entre videos */
+	background-color: #FFFFFF; /* Negro puro */
+	margin: 0;
+}
+
+/* El contenedor del video individual */
+.video-container {
+    width: 90%;             /* Deja un 5% de margen a cada lado para que no pegue al borde físico */
+    max-width: 850px;       /* Tamaño máximo para que en PC se vea elegante */
+    margin: 0 auto;         /* El "ancla" que garantiza el centrado horizontal */
+    aspect-ratio: 16 / 9;   /* Mantiene la proporción de cine */
+    position: relative;
+    background: #000;
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+/* --- Ajustes exclusivos para Pantallas Grandes (PC) --- */
+@media (min-width: 1024px) {
+    .portfolio-grid {
+        gap: 80px;          /* Más espacio entre videos para que respire el diseño */
+        padding: 50px 0;    /* Más aire arriba y abajo */
+    }
+
+    .video-container {
+        width: 100%;         /* Aumentamos del 90% al 70% del ancho total (pero de una pantalla mucho más grande) */
+        max-width: 1400px;  /* Le damos un techo más alto para que brillen los detalles */
+        /*box-shadow: 0 20px 50px rgba(0,0,0,0.8); /* Una sombra más profunda para dar profundidad */
+    }
+}
+/* GRID DE PORTAFOLIO */
+.portfolio-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 80px 0; /* Más aire entre el hero y el inicio */
+    gap: 5px;      /* Espacio generoso entre cada bloque de video */
+    background-color: #FFFFFF; 
+    margin: 0;
+}
+
+.video-item {
+    width: 90%;
+    max-width: 850px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.video-container {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    position: relative;
+    background: #000;
+}
+
+/* Estilos de los nombres debajo del video */
+.video-details {
+    margin-top: 20px; /* Espacio entre video y texto */
+    text-align: center;
+	margin-bottom: 20px;
+}
+
+.couple-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px !important; /* Un poco más grande para destacar */
+    color: #1a1a1a !important; /* Gris casi negro */
+    margin: 0 0 8px 0;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.location {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    color: #888888; /* Gris suave */
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 0;
+}
+
+/* Ajuste para PC */
+@media (min-width: 1024px) {
+    .video-item {
+        max-width: 1200px; /* En pantallas grandes, el video se luce más */
+    }
+    .couple-name {
+        font-size: 28px !important;
+    }
+}
+/* ============================================
+           SOCIAL PROOF / TESTIMONIOS
+   ============================================ */
+
+.testimonials {
+	background-color: #FFFFFF;
+	padding: 20px 20px 100px 20px; /* Más aire arriba y abajo */
+	text-align: center;
+}
+
+.testimonials-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 60px; /* Más espacio entre las parejas */
+    max-width: 1400px;
+    margin: 0 auto;
+	padding: 50px 20px 100px 20px;
+}
+
+.testimonial-card {
+    flex: 1;
+    min-width: 320px; 
+    max-width: 400px; /* Limitamos el ancho de la columna para que no se pierda el centrado */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* FOTO ORIGINAL: Aquí controlas el tamaño base */
+.couple-img {
+    width: 220px;        /* Tamaño ideal para que se vea imponente */
+    height: 220px;       
+    object-fit: cover;
+    border-radius: 50%;
+    filter: grayscale(100%); 
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Transición más suave */
+    margin-bottom: 30px;
+    border: 0px solid rgba(255,255,255,0.1); /* Un borde sutil */
+}
+
+/* EFECTO HOVER: Crece de forma elegante, no exagerada */
+.testimonial-card:hover .couple-img {
+    transform: scale(1.2); /* Crece un poquito, lo justo para dar vida */
+    filter: grayscale(0%);
+    border-color: rgba(255,255,255,0.5);
+}
+
+/* FUENTE DEL TESTIMONIO (La Cita) */
+.quote {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 15px;      /* Tamaño legible */
+	line-height: 1.8;     /* Espaciado para look de revista */
+	color: #393939;       /* Gris claro elegante */
+	max-width: 300px;     /* Para que el texto no se desparrame */
+	margin: 0 auto 20px auto;
+	font-style: italic;   /* Estilo de cita */
+}
+
+/* FUENTE DE LOS NOMBRES */
+.couple-names {
+	font-family: 'Playfair Display', serif;
+	font-size: 18px;      /* Tamaño de los nombres */
+	letter-spacing: 3px;  /* Aire entre letras Premium */
+	text-transform: uppercase;
+	color: #393939;
+	font-weight: 400;     /* No muy negrita para que sea elegante */
+}
+
+/* Ajuste para móviles: Fotos un poco más pequeñas para que quepan bien */
+@media (max-width: 768px) {
+    .couple-img {
+        width: 180px;
+        height: 180px;
+    }
+    .testimonials-container {
+        gap: 50px;
+    }
+}
+
+/* ============================================
+                     FOOTER
+   ============================================ */
+.main-footer {
+    background-color: #000; /* Fondo negro profundo */
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.social-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Espacio entre los dos iconos */
+    margin-bottom: 30px;
+}
+
+.social-icon img {
+    width: 30px; /* Tamaño ideal para que no se vean gigantes */
+    height: auto;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    /* Si tus SVG son negros, esta línea los vuelve blancos mágicamente: */
+    filter: invert(1); 
+}
+
+.social-icon:hover img {
+    transform: scale(1.1); /* Se agrandan un poquito al pasar el mouse */
+    opacity: 0.7;
+}
+
+.copyright {
+    color: #666;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+/* BOTON WAPP */
+/* Estilo del botón de WhatsApp */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #25d366;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 1000; /* Siempre por encima de todo */
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+    transform: scale(1.1);
+}
+
+.whatsapp-btn img {
+    width: 35px;
+    height: 35px;
+}
+
+/* En móviles lo hacemos un poquito más pequeño para que no tape los videos */
+@media (max-width: 768px) {
+    .whatsapp-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+    }
+}
+/* ============================================
+               PÁGINA DE CONTACTO
+   ============================================ */
+
+/* Esto asegura que el fondo sea negro y el texto blanco */
+.contact-page {
+	background-color: #FFFFFF !important;
+	color: #888888 !important;
+	min-height: 100vh;
+	margin: 0;
+	padding: 0;
+	font-family: 'Montserrat', sans-serif;
+}
+
+/* Alineación de los grupos (Nombre/Teléfono, etc.) */
+.form-group {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 25px;
+}
+
+/* El Wrapper: acomoda el label arriba del input */
+.input-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.input-wrapper label, .form-group-full label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #888; /* Gris elegante */
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+/* Diseño de los inputs (solo la línea inferior) */
+.contact-page input:not([type="checkbox"]):not([type="radio"]), 
+.contact-page textarea {
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid #888888 !important;
+    color: #888888 !important;
+    padding: 10px 0 !important;
+    font-size: 14px;
+    outline: none;
+    border-radius: 0;
+}
+
+/* El botón ENVIAR */
+.submit-btn {
+    width: 100%;
+    background-color: #000000 !important;
+    color: #FFFFFF !important;
+    border: none;
+    padding: 20px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    cursor: pointer;
+    margin-top: 40px;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #cccccc !important;
+}
+
+/* Responsive para celular: pone un campo debajo del otro */
+@media (max-width: 768px) {
+    .form-group {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+/* Ajuste de márgenes y ancho para que respire */
+.contact-container {
+    padding: 160px 40px 80px 40px; /* Más espacio arriba y a los lados */
+    max-width: 700px;    /* Lo estrechamos un poco para que sea más fácil de leer */
+    margin: 0 auto;      /* Lo centra perfectamente en la pantalla */
+}
+
+/* Espaciado extra entre la cabecera y el inicio del formulario */
+.contact-header {
+    margin-bottom: 80px; 
+    text-align: center;
+}
+
+/* Separación entre los bloques de preguntas */
+.form-group, .form-group-full, .checkbox-group {
+    margin-bottom: 45px; 
+}
+
+/* Ajuste para que las líneas de texto no se peguen al borde en móviles */
+@media (max-width: 480px) {
+    .contact-container {
+        padding: 60px 25px; /* Un poco menos en móvil para no perder espacio real */
+    }
+}
+
+.nav-link {
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.7;
+    transition: 0.3s ease;
+}
+
+.nav-link:hover {
+    opacity: 1;
+}
+
+/* Selector de Idiomas */
+.lang-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #fff;
+}
+
+.lang {
+    opacity: 0.5;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.lang.active {
+    opacity: 1;
+    font-weight: bold;
+}
+
+.divider {
+    opacity: 0.3;
+}
+/*  PULIDO ESTÉTICO DE SELECTORES (Checkboxes y Radios) */
+
+/* Cambia el color azul por defecto a Negro */
+.contact-page input[type="checkbox"],
+.contact-page input[type="radio"] {
+    accent-color: #000000; /* Aquí ocurre la magia del color negro */
+    cursor: pointer;
+    transform: scale(1.1); /* Los hace un pelín más grandes para que sean fáciles de tocar */
+    margin-right: 10px;
+}
+
+/* Estilo de la lista de opciones para que se vea más limpia */
+.checkbox-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.checkbox-list label {
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #555555;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.checkbox-list label:hover {
+    color: #000000;
+}
+
+/* Unificación de textos decorativos en el formulario */
+.checkbox-group p {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #000000; /* Títulos de sección en negro para contraste */
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+/* ============================================
+                     NOSOTROS
+   ============================================ */
+
+:root {
+    --bg-color: #ffffff;
+    --text-main: #1a1a1a;    /* Negro editorial */
+    --text-muted: #666666;   /* Gris para párrafos */
+    --text-light: #999999;   /* Gris para detalles */
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Montserrat', sans-serif;
+    --line-height: 1.8;
+}
+
+.about-section {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    padding: 160px 5% 100px 5%; /* Más aire arriba por el header */
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* --- INTRODUCCIÓN --- */
+
+.about-intro {
+    margin-bottom: 40px;
+}
+
+.section-title {
+    font-family: var(--font-serif);
+    font-size: 42px;
+    font-weight: 400;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.intro-text {
+    max-width: 850px;
+    margin: 0 auto;
+	text-align: left;
+    font-size: 16px;
+    color: var(--text-muted);
+}
+
+/* Letra Capital Editorial */
+
+.intro-text p:first-of-type::first-letter {
+    font-family: var(--font-serif);
+    font-size: 5.2rem;    /* Tamaño grande e impactante */
+    float: left;          /* Hace que el texto rodee la letra */
+    margin-right: 12px;   /* Espacio entre la E y las palabras */
+    margin-top: 6px;      /* Ajuste fino para alinear el tope de la E con el texto */
+    line-height: 0.85;    /* Crucial para que no deje un hueco gigante debajo */
+    color: var(--text-main);
+    font-weight: 400;
+}
+
+/* --- CONTROLES SOMOS ALEJO y CAMI --- */
+
+.intro-text p {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.highlight {
+    font-style: italic;
+	font-size: 4rem;
+    color: var(--text-light);
+    display: block;
+    margin-top: 40px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+.intro-content-wrapper {
+    max-width: 650px; /* Controla qué tan ancho es el bloque de texto */
+    margin: 0 auto 60px auto; /* Centra el bloque y le da espacio con la foto de abajo */
+    padding: 0 20px; /* Margen de seguridad para móviles muy pequeños */
+}
+
+.intro-text p {
+    text-align: left; /* Para que coincida con la estética de la imagen que mostraste */
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+/* Ajuste para que la letra capital no rompa el centrado si decides usarla */
+.intro-text p:first-of-type::first-letter {
+    float: none; 
+    display: block;
+    font-size: 5rem;
+    margin-bottom: 10px;
+}
+
+/* --- MÁSCARAS DE IMAGEN --- */
+.image-mask {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background-color: #f9f9f9;
+}
+
+/* LA VENTANA (FOTO PRINCIPAL) */
+.parallax-photo {
+    padding-top: 100% !important; /* Controla el alto de la "ventana" */
+    margin-top: 10px;
+}
+
+.parallax-photo img {
+    height: 100% !important; /* La foto es más alta que el hueco */
+    width: 100% !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    transition: none !important; /* Vital para que el JS no pelee con el CSS */
+    will-change: transform;
+}
+
+/* FOTOS DE PERFIL (ALEJO & CAMILA) */
+
+.profile .image-mask {
+    padding-top: 100% !important; /* Formato vertical */
+}
+
+.profile .image-mask img {
+    height: 100% !important; /* Estas no se mueven, llenan el 100% */
+    width: 100% !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    transition: transform 0.8s ease; /* Zoom suave al pasar el mouse */
+}
+
+.profile .image-mask:hover img {
+    transform: scale(1.05);
+}
+
+/* Fotos de Perfil: Verticales */
+
+.profile .image-mask {
+    padding-top: 100%; /* Reemplazo de aspect-ratio 2:3 o 3:4 */
+}
+
+.image-mask img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.image-mask:hover img {
+    transform: scale(1.05);
+}
+
+/* --- GRID DE ROSTROS --- */
+
+.faces-grid {
+    margin-top: 50px;
+}
+
+.grid-title {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 80px;
+    letter-spacing: 2px;
+    font-style: italic;
+}
+
+.profile {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+    margin-bottom: 120px;
+}
+
+.profile h4 {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: var(--text);
+}
+.about-footer {
+    text-align: center;    /* Centra el texto (h3) y el párrafo (p) */
+    margin-top: 50px;     /* Espacio con la sección de arriba */
+    border-top: 1px solid #eee; /* La línea divisoria sutil */
+    padding-top: 80px;     /* Espacio entre la línea y el título */
+    width: 100%;           /* Asegura que ocupe todo el ancho para poder centrar */
+}
+
+.profile-info p {
+    max-width: 450px; /* Evita que las líneas de texto sean demasiado largas */
+    line-height: 1.8;  /* Dale aire entre líneas para que sea legible y elegante */
+	
+}
+
+.about-footer h3 {
+    font-family: var(--font-serif);
+    font-size: 32px;       /* El tamaño que ajustamos antes */
+    margin-bottom: 15px;
+    display: block;        /* Asegura que se comporte como bloque para centrarse */
+}
+
+.about-footer p {
+    font-size: 16px;
+	font-family: var(--font-serif);
+    color: #1a1a1a;
+    max-width: 600px;      /* Limitamos el ancho para que no sea una línea eterna */
+    margin: 0 auto;        /* ¡CLAVE! Centra el bloque del párrafo si tiene max-width */
+}
+/* Esto cambia el color SOLO de los nombres en los perfiles */
+.profile-info h4 {
+    color: #1a1a1a !important; /* O usa var(--text-main) si prefieres la variable */
+    font-family: var(--font-serif);
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+/* --- RESPONSIVE PARA MÓVIL --- */
+
+@media (max-width: 768px) {
+    
+    /* 1. Hacemos que la rejilla sea de 1 sola columna */
+    .profile {
+        grid-template-columns: 1fr !important; /* Una sola columna */
+        gap: 30px; /* Menos espacio entre foto y texto */
+        margin-bottom: 80px;
+    }
+
+    /* 2. Ajustamos el orden para que siempre vaya Foto -> Texto */
+    .profile.camila {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .profile.camila .image-mask {
+        order: -1; /* Sube la foto de Camila arriba del texto */
+    }
+
+    /* 3. Limpiamos paddings de texto que pusimos para laptop */
+    .profile-info {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        text-align: center; /* Centramos el texto para un look más móvil */
+		color: var(--text-muted);
+    }
+
+    /* 4. Ajustamos tamaños de letra para que no sean gigantes */
+    .section-title {
+        font-size: 32px;
+    }
+    
+    .grid-title {
+        font-size: 20px;
+        margin-bottom: 40px;
+    }
+
+    /* 5. La foto parallax: que no sea tan alta en móvil */
+    .parallax-photo {
+        padding-top: 100% !important; /* Más cuadrada para que no ocupe toda la pantalla */
+    }
+	
+}
