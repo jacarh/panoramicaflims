@@ -499,6 +499,8 @@ h1, h2, h3 {
     padding: 60px 20px;
     position: relative; /* Asegura que se comporte como un bloque sólido */
     z-index: 10;
+	margin-top: -1px; /* Elimina cualquier línea blanca de error entre secciones */
+    clear: both;      /* Asegura que no haya elementos flotando a los lados */
 }
 
 /* En móviles lo hacemos un poquito más pequeño para que no tape los videos */
@@ -1023,5 +1025,15 @@ h1, h2, h3 {
         overflow: hidden;                      /* Evita scroll horizontal */
     }
 }
-	
+.contact-page, .about-section {
+    display: block; /* Fuerza el flujo normal */
+    overflow: hidden; /* Corta cualquier elemento invisible que flote abajo */
+}
+/* FUERA DE CUALQUIER MEDIA QUERY (Al final de todo) */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+    height: auto;
+    min-height: 100%;
 }
