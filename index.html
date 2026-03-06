@@ -12,13 +12,13 @@
 </head>
 
 <body>
-    <header class="main-header">
+    <header class="main-header header-transparent">
         <div class="header-container">
             <div class="brand">
                 <a href="index.html">PANORÁMICA</a>
             </div>
             <nav class="nav-menu">
-                <a href="index.html#about" class="nav-link">NOSOTROS</a>
+                <a href="nosotros.html" class="nav-link">NOSOTROS</a>
                 <a href="contacto.html" class="nav-link">CONTACTO</a>
                 <div class="lang-selector">
                     <span class="lang active">ES</span>
@@ -40,18 +40,44 @@
         </div>
     </section>
 	
-    <section class="portfolio">
+<section class="portfolio">
         <div class="portfolio-grid">
-            <div class="video-container"><iframe src="https://galleries.vidflow.co/videos/l4gtd0g4" frameborder="0" allowfullscreen></iframe></div>
-            <div class="video-container"><iframe src="https://galleries.vidflow.co/videos/3b86a5c3" frameborder="0" allowfullscreen></iframe></div>
-            <div class="video-container"><iframe src="https://galleries.vidflow.co/videos/gmilsa3p" frameborder="0" allowfullscreen></iframe></div>
-            <div class="video-container"><iframe src="https://galleries.vidflow.co/videos/63738e10" frameborder="0" allowfullscreen></iframe></div>
-            <div class="video-container"><iframe src="https://galleries.vidflow.co/videos/e7313564" frameborder="0" allowfullscreen></iframe></div>
-            <div class="video-container"><iframe src="https://galleries.vidflow.co/videos/i163wjbp" frameborder="0" allowfullscreen></iframe></div>
+            
+            <div class="video-item">
+                <div class="video-container">
+                    <iframe src="https://galleries.vidflow.co/videos/l4gtd0g4" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="video-details">
+                    <h3 class="couple-name">Ana & Diego</h3>
+                    <p class="location">Cartagena de Indias, Colombia</p>
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-container">
+                    <iframe src="https://galleries.vidflow.co/videos/3b86a5c3" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="video-details">
+                    <h3 class="couple-name">Mariana & Lucas</h3>
+                    <p class="location">Antigua Guatemala, Guatemala</p>
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-container">
+                    <iframe src="https://galleries.vidflow.co/videos/gmilsa3p" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="video-details">
+                    <h3 class="couple-name">Elena & Mateo</h3>
+                    <p class="location">Valle de Bravo, México</p>
+                </div>
+            </div>
+
         </div>
     </section>
-	
-    <section id="about" class="testimonials"> <h2>Nuestras parejas</h2>
+
+    <section id="about" class="testimonials"> 
+        <h2>Nuestras parejas</h2>
         <div class="testimonials-container">
             <div class="testimonial-card">
                 <img src="assets/img/pareja1.png" alt="Natalie & Enrique" class="couple-img">
@@ -69,7 +95,7 @@
                 <span class="couple-names">Maria & Juan</span>
             </div>
         </div>
-    </section>	
+    </section>
 		
     <footer class="main-footer">
         <div class="social-container">
@@ -86,5 +112,30 @@
     <a href="https://wa.me/573108432193" class="whatsapp-btn" target="_blank">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Contactar a Panormica">
     </a>
+<script>
+    window.addEventListener('scroll', function() {
+        const heroContent = document.querySelector('.hero-content');
+        const header = document.querySelector('.main-header');
+        let scrollPos = window.scrollY;
+        
+        // 1. Efecto Fade del Logo Hero
+        let opacityValue = 1 - (scrollPos / 500);
+        if (opacityValue >= 0) {
+            heroContent.style.opacity = opacityValue;
+            heroContent.style.visibility = "visible";
+        } else {
+            heroContent.style.opacity = 0;
+            heroContent.style.visibility = "hidden";
+        }
+
+        // 2. Cambio de color del Header (Sticky)
+        if (scrollPos > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+</script>	
+	
 </body>
 </html>
