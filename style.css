@@ -261,6 +261,7 @@ h1, h2, h3 {
     position: absolute;
     top: 0;
     left: 0;
+	opacity: 1;
 }
 /* --- Ajustes exclusivos para Pantallas Grandes (PC) --- */
 @media (min-width: 1024px) {
@@ -356,6 +357,21 @@ h1, h2, h3 {
 .profile.camila .profile-info {
     text-align: right;
     padding-left: 20px; /* Se acerca a su foto */
+}
+.video-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0; /* Empiezan invisibles */
+    transition: opacity 1s ease; /* Aparecen con fundido elegante */
+}
+
+/* Cuando el script les pone el 'src', se vuelven visibles */
+.video-container iframe[src] {
+    opacity: 1;
 }
 /* ============================================
            SOCIAL PROOF / TESTIMONIOS
