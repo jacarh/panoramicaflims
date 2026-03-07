@@ -22,7 +22,14 @@ h1, h2, h3 {
     justify-content: center;
     overflow: hidden;
 }
-
+.contact-header h1 {
+    color: #ffffff !important;   /* O el color que prefieras, ej: #D4AF37 para dorado */
+    font-family: var(--font-serif);
+    font-size: 1.5rem;            /* Ajusta el tamaño a tu gusto */
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+}
 .hero-video {
     position: absolute;
     top: 50%;
@@ -521,8 +528,8 @@ h1, h2, h3 {
 
 /* Esto asegura que el fondo sea negro y el texto blanco */
 .contact-page {
-	background-color: #FFFFFF !important;
-	color: #888888 !important;
+	background-color: #000000 !important;
+	color: #FFFFFF !important;
 	min-height: 100dvh;
 	margin: 0;
 	padding: 0;
@@ -547,7 +554,7 @@ h1, h2, h3 {
 .input-wrapper label, .form-group-full label {
     font-size: 10px;
     letter-spacing: 2px;
-    color: #888; /* Gris elegante */
+    color: #FFFFFF; /* Gris elegante */
     margin-bottom: 8px;
     text-transform: uppercase;
 }
@@ -557,8 +564,8 @@ h1, h2, h3 {
 .contact-page textarea {
     background: transparent !important;
     border: none !important;
-    border-bottom: 1px solid #888888 !important;
-    color: #888888 !important;
+    border-bottom: 1px solid #FFFFFF !important;
+    color: #FFFFFF !important;
     padding: 10px 0 !important;
     font-size: 14px;
     outline: none;
@@ -568,8 +575,8 @@ h1, h2, h3 {
 /* El botón ENVIAR */
 .submit-btn {
     width: 100%;
-    background-color: #000000 !important;
-    color: #FFFFFF !important;
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
     border: none;
     padding: 20px;
     font-weight: bold;
@@ -617,7 +624,7 @@ h1, h2, h3 {
 
 .nav-link {
     font-family: 'Montserrat', sans-serif;
-    color: #fff;
+    color: #FFFFFF;
     text-decoration: none;
     font-size: 11px;
     letter-spacing: 3px;
@@ -676,7 +683,7 @@ h1, h2, h3 {
 .checkbox-list label {
     font-size: 12px;
     letter-spacing: 1px;
-    color: #555555;
+    color: #FFFFFF;
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -684,7 +691,7 @@ h1, h2, h3 {
 }
 
 .checkbox-list label:hover {
-    color: #000000;
+    color: #666666;
 }
 
 /* Unificación de textos decorativos en el formulario */
@@ -694,6 +701,20 @@ h1, h2, h3 {
     color: #000000; /* Títulos de sección en negro para contraste */
     font-weight: bold;
     margin-bottom: 10px;
+}
+@media (max-width: 768px) {
+    .contact-container {
+        /* Aumentamos el padding superior para compensar la altura del header blanco */
+        padding-top: 220px !important; 
+        padding-left: 25px;
+        padding-right: 25px;
+        max-width: 100%;
+    }
+
+    .contact-header {
+        /* Añadimos un poco más de aire al título "Book the date" */
+        margin-bottom: 50px; 
+    }
 }
 /* ============================================
                      NOSOTROS
