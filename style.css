@@ -8,7 +8,7 @@ body {
 }
 
 h1, h2, h3 {
-	font-family: 'Playfair Display', serif;
+	font-family: 'Cormorant Garamond', serif;
 	font-size: 20px;
 	color: #555555;
 }
@@ -51,7 +51,7 @@ h1, h2, h3 {
 
 .hero-content h1 {
 	font-size: 1rem;
-	font-style: italic;
+	font-style: normal;
 	font-weight: 400;
 	color: #FFFFFF;
 }
@@ -61,7 +61,10 @@ h1, h2, h3 {
 
 @font-face {
     font-family: 'The Seasons';
-    src: url('fonts/theseasons.otf') format('opentype');
+    /* Usamos la URL absoluta de tu repositorio */
+    src: url('https://jacarh.github.io/panoramicaflims/assets/fonts/theseasons.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 .main-header {
@@ -200,7 +203,7 @@ h1, h2, h3 {
    ============================================ */
 .hero-logo {
     width: 100%;           /* Que intente ocupar su espacio */
-    max-width: 500px;      /* Pero que nunca supere los 500px en PC */
+    max-width: 300px;      /* Pero que nunca supere los 500px en PC */
     height: auto;          /* Mantiene la proporción */
     display: block;        /* Lo trata como un bloque sólido */
     margin: 0 auto 20px;   /* Centrado horizontal y aire abajo */
@@ -301,7 +304,7 @@ h1, h2, h3 {
 }
 
 .couple-name {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 24px !important; /* Un poco más grande para destacar */
     color: #1a1a1a !important; /* Gris casi negro */
     margin: 0 0 8px 0;
@@ -394,7 +397,7 @@ h1, h2, h3 {
 /* 1. EL NOMBRE (AHORA ARRIBA) */
 .couple-names {
     display: block;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 16px;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -701,7 +704,7 @@ h1, h2, h3 {
     --text-main: #1a1a1a;    /* Negro editorial */
     --text-muted: #666666;   /* Gris para párrafos */
     --text-light: #999999;   /* Gris para detalles */
-    --font-serif: 'Playfair Display', serif;
+    --font-serif: 'Cormorant Garamond', serif;
     --font-sans: 'Montserrat', sans-serif;
     --line-height: 1.8;
 }
