@@ -192,29 +192,30 @@ const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQNH4TkBNPHsn
 fetch(SHEET_URL)
   .then(res => res.text())
   .then(csv => {
-    // Limpiamos retornos de carro y dividimos por filas
     const filas = csv.replace(/\r/g, "").split('\n');
     const videos = document.querySelectorAll('.portfolio-video');
     const nombres = document.querySelectorAll('.dyn-name');
     const lugares = document.querySelectorAll('.dyn-location');
-    const params = "?autoplay=1&muted=1&loop=1&background=1";
+    
+    // Cambiamos el primer ? por un & para que sea compatible con la Llave Maestra si fuera necesario
+    const params = "autoplay=1&muted=1&loop=1&background=1";
 
-    // i=0 es la fila 1 del Excel (Ani & Emeric)
     filas.forEach((linea, i) => {
       if (i < 3 && linea.trim() !== "") { 
         const datos = linea.split(',');
-        const nombrePareja = datos[0] ? datos[0].trim() : "";
+        const nombrePareja = datos[0] ? datos[0].trim() : "Pareja Panorámica";
         const linkVideo = datos[1] ? datos[1].trim() : "";
         const ubicacion = datos[2] ? datos[2].trim() : "";
 
         if (videos[i] && linkVideo) {
           const videoId = linkVideo.replace(/\/$/, "").split('/').pop();
-          videos[i].src = `https://galleries.vidflow.co/videos/${videoId}${params}`;
+          // Construcción limpia de la URL
+          videos[i].src = `https://galleries.vidflow.co/videos/${videoId}?${params}`;
           nombres[i].innerText = nombrePareja;
           lugares[i].innerText = ubicacion;
         }
       }
     });
   })
-  .catch(err => console.error("Error en la conexión:", err));
+  .catch(err => console.error("Error de conexión con Sheets:", err));
 </script>
