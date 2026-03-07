@@ -7,7 +7,7 @@
     
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
     
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
 </head>
@@ -124,18 +124,16 @@
     </a>
 
 <script>
+    // 1. Efecto de Scroll para Header y Hero
     window.addEventListener('scroll', function() {
         const heroContent = document.querySelector('.hero-content');
         const header = document.querySelector('.main-header');
         let scrollPos = window.scrollY;
         
         let opacityValue = 1 - (scrollPos / 500);
-        if (opacityValue >= 0) {
-            heroContent.style.opacity = opacityValue;
-            heroContent.style.visibility = "visible";
-        } else {
-            heroContent.style.opacity = 0;
-            heroContent.style.visibility = "hidden";
+        if (heroContent) {
+            heroContent.style.opacity = Math.max(0, opacityValue);
+            heroContent.style.visibility = opacityValue <= 0 ? "hidden" : "visible";
         }
 
         if (scrollPos > 100) {
@@ -144,4 +142,25 @@
             header.classList.remove('scrolled');
         }
     });
+
+    // 2. LA LLAVE MAESTRA: Forzar el Play tras la primera interacción
+    const wakeUpVideos = () => {
+        const iframes = document.querySelectorAll('iframe');
+        iframes.forEach(iframe => {
+            // Re-inyectamos el src para forzar el reload con el permiso de interacción ya ganado
+            const currentSrc = iframe.src;
+            if (!currentSrc.includes('loaded=true')) {
+                iframe.src = currentSrc + "&loaded=true";
+            }
+        });
+        // Una vez despiertos, quitamos los escuchadores para no gastar recursos
+        document.removeEventListener('scroll', wakeUpVideos);
+        document.removeEventListener('click', wakeUpVideos);
+        document.removeEventListener('touchstart', wakeUpVideos);
+    };
+
+    // Escuchamos cualquier señal de vida del usuario
+    document.addEventListener('scroll', wakeUpVideos, { once: true });
+    document.addEventListener('click', wakeUpVideos, { once: true });
+    document.addEventListener('touchstart', wakeUpVideos, { once: true });
 </script>

@@ -66,53 +66,37 @@ h1, h2, h3 {
                       HEADER
    ============================================ */
 
-@font-face {
-    font-family: 'The Seasons';
-    /* Usamos la URL absoluta de tu repositorio */
-    src: url('https://jacarh.github.io/panoramicaflims/assets/fonts/theseasons.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-}
-
 .main-header {
     position: fixed !important;
     top: 0;
     left: 0;
     width: 100% !important;
     z-index: 9999;
-    height: auto; 
     padding: 30px 0 20px 0; 
-    
-    /* CONTROL TOTAL DE CENTRADO */
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
-    text-align: center !important;
-    
-    transition: all 0.3s ease;
+    transition: background-color 0.4s ease !important;
 }
 
-/* EL LOGO: THE SEASONS */
 .brand {
     width: 100%;
     margin-bottom: 15px;
+    text-align: center;
 }
 
 .brand a {
-    font-family: 'The Seasons', serif !important;
+    font-family: 'Bodoni Moda', serif !important;
     font-size: 25px;
+    font-weight: 500;
     text-transform: uppercase;
     text-decoration: none;
-    
-    /* El truco del centrado perfecto con tracking */
-    letter-spacing: 0.1px; 
-    text-indent: 12px; /* Esto compensa el espacio de la última letra */
-    color: #ffffff;
+    letter-spacing: 0.15em; 
+    text-indent: 0.15em; 
     display: inline-block;
+    transition: color 0.3s ease;
 }
-
-/* MENÚ DE NAVEGACIÓN */
 
 .nav-menu {
     display: flex !important;
@@ -125,19 +109,13 @@ h1, h2, h3 {
 
 .nav-link, .lang, .divider {
     font-family: 'Montserrat', sans-serif;
-	color: #ffffff;
     font-size: 10px;
     letter-spacing: 2px;
     text-transform: uppercase;
     text-decoration: none;
 }
 
-/* --- COLORES DINÁMICOS --- */
-
-/* Versión Index (Transparente sobre video) */
-.header-transparent {
-    background-color: transparent !important;
-}
+/* --- COLORES PARA INDEX (Header Transparente) --- */
 .header-transparent .brand a,
 .header-transparent .nav-link,
 .header-transparent .lang,
@@ -145,64 +123,31 @@ h1, h2, h3 {
     color: #ffffff !important;
 }
 
-/* Versión Páginas (Blanco Sólido) */
+/* --- COLORES PARA PÁGINAS INTERNAS (Header Blanco) --- */
 .header-solid {
     background-color: #ffffff !important;
     border-bottom: 1px solid #f2f2f2;
 }
+
 .header-solid .brand a,
 .header-solid .nav-link,
 .header-solid .lang,
 .header-solid .divider {
-    color: #000000 !important;
+    color: #000000 !important; /* Letras negras sobre fondo blanco */
 }
 
-/* AJUSTE MÓVIL */
-
-@media (max-width: 768px) {
-    /* 1. Aseguramos que el contenedor de la intro no limite el ancho de la foto */
-    .about-intro {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-    }
-
-    /* 2. Hacemos que la máscara de la foto ocupe el 100% sin márgenes */
-    .about-intro .image-mask.parallax-photo {
-        width: 100% !important;
-        max-width: 100% !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        padding-top: 150% !important; 
-    }
-
-    /* 3. El texto de la intro sí debe mantener margen para no tocar los bordes */
-    .intro-content-wrapper, .intro-text {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-}
-
-
-/* Este es el estado del header cuando "aterriza" en la zona blanca */
+/* --- ESTADO AL HACER SCROLL (En el Index) --- */
 .main-header.scrolled {
-    background-color: #000000 !important; /* Fondo negro sólido */
-    padding: 15px 0 10px 0; /* Se hace un poco más delgado al bajar (más Pro) */
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    background-color: #000000 !important; /* Se vuelve negro al bajar */
+    padding: 20px 0 15px 0;
 }
 
-/* Forzamos a que todo lo de adentro sea blanco cuando tenga la clase 'scrolled' */
 .main-header.scrolled .brand a,
 .main-header.scrolled .nav-link,
 .main-header.scrolled .lang,
 .main-header.scrolled .divider {
-    color: #ffffff !important;
+    color: #ffffff !important; /* Letras blancas sobre fondo negro */
 }
-
-/* Suavizamos la transición para que no sea un golpe seco */
-.main-header {
-    transition: background-color 0.4s ease, padding 0.4s ease !important;
-}
-
 
 
 /* ============================================
