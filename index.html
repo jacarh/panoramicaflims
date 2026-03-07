@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
+	
+	
+	
 <body>
     <header class="main-header header-transparent">
         <div class="header-container">
@@ -41,50 +44,64 @@
         </div>
     </section>
 
+
+	
+	
+	
 <section class="portfolio">
     <div class="portfolio-grid">
         
         <div class="video-item">
             <div class="video-container">
-                <iframe src="https://galleries.vidflow.co/videos/l4gtd0g4?autoplay=1&muted=1&loop=1&background=1" 
+                <iframe class="portfolio-video" 
+                        src="" 
                         frameborder="0" 
                         allow="autoplay; fullscreen" 
                         allowfullscreen></iframe>
             </div>
             <div class="video-details">
-                <h3 class="couple-name">Ana & Diego</h3>
-                <p class="location">Cartagena de Indias, Colombia</p>
+                <h3 class="couple-name dyn-name">Cargando...</h3>
+                <p class="location dyn-location">Cargando...</p>
             </div>
         </div>
 
         <div class="video-item">
             <div class="video-container">
-                <iframe src="https://galleries.vidflow.co/videos/3b86a5c3?autoplay=1&muted=1&loop=1&background=1" 
+                <iframe class="portfolio-video" 
+                        src="" 
                         frameborder="0" 
                         allow="autoplay; fullscreen" 
                         allowfullscreen></iframe>
             </div>
             <div class="video-details">
-                <h3 class="couple-name">Mariana & Lucas</h3>
-                <p class="location">Antigua Guatemala, Guatemala</p>
+                <h3 class="couple-name dyn-name">Cargando...</h3>
+                <p class="location dyn-location">Cargando...</p>
             </div>
         </div>
 
         <div class="video-item">
             <div class="video-container">
-                <iframe src="https://galleries.vidflow.co/videos/gmilsa3p?autoplay=1&muted=1&loop=1&background=1" 
+                <iframe class="portfolio-video" 
+                        src="" 
                         frameborder="0" 
                         allow="autoplay; fullscreen" 
                         allowfullscreen></iframe>
             </div>
             <div class="video-details">
-                <h3 class="couple-name">Elena & Mateo</h3>
-                <p class="location">Valle de Bravo, México</p>
+                <h3 class="couple-name dyn-name">Cargando...</h3>
+                <p class="location dyn-location">Cargando...</p>
             </div>
         </div>
 
     </div>
-</section>
+</section>	
+	
+	
+	
+	
+	
+	
+	
 
     <section id="about" class="testimonials"> 
         <h2>Nuestras parejas</h2>
@@ -163,4 +180,42 @@
     document.addEventListener('scroll', wakeUpVideos, { once: true });
     document.addEventListener('click', wakeUpVideos, { once: true });
     document.addEventListener('touchstart', wakeUpVideos, { once: true });
+</script>
+	
+
+	
+	
+	
+	
+<script>
+const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQNH4TkBNPHsnCYZivN_Qozrbah2fqYaRkqHyx46uSvjeCzriExLWJymoeHYszdoZMD1RMofL7wQ-ce/pub?output=csv';
+
+fetch(SHEET_URL)
+  .then(res => res.text())
+  .then(csv => {
+    // Limpiamos posibles retornos de carro (\r) que a veces mete Excel/Sheets
+    const filas = csv.replace(/\r/g, "").split('\n');
+    const videos = document.querySelectorAll('.portfolio-video');
+    const nombres = document.querySelectorAll('.dyn-name');
+    const lugares = document.querySelectorAll('.dyn-location');
+    const params = "?autoplay=1&muted=1&loop=1&background=1";
+
+    filas.forEach((linea, i) => {
+      if (i < 3 && linea.trim() !== "") { 
+        const datos = linea.split(',');
+        const nombrePareja = datos[0] ? datos[0].trim() : "Pareja Panorámica";
+        const linkVideo = datos[1] ? datos[1].trim() : "";
+        const ubicacion = datos[2] ? datos[2].trim() : "Colombia";
+
+        if (videos[i] && linkVideo) {
+          // Extraemos el ID sin importar si el link termina en "/" o tiene basura
+          const videoId = linkVideo.replace(/\/$/, "").split('/').pop();
+          videos[i].src = `https://galleries.vidflow.co/videos/${videoId}${params}`;
+          nombres[i].innerText = nombrePareja;
+          lugares[i].innerText = ubicacion;
+        }
+      }
+    });
+  })
+  .catch(err => console.error("Error cargando el portafolio:", err));
 </script>
