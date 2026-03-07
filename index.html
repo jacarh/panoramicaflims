@@ -185,7 +185,43 @@
 
 	
 	
-	
+<script>
+const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQNH4TkBNPHsnCYZivN_Qozrbah2fqYaRkqHyx46uSvjeCzriExLWJymoeHYszdoZMD1RMofL7wQ-ce/pub?output=csv';
+
+fetch(SHEET_URL)
+  .then(res => res.text())
+  .then(csv => {
+    // Limpiamos basura del Excel y dividimos por filas
+    const filas = csv.replace(/\r/g, "").split('\n');
+    const videos = document.querySelectorAll('.portfolio-video');
+    const nombres = document.querySelectorAll('.dyn-name');
+    const lugares = document.querySelectorAll('.dyn-location');
+    const params = "autoplay=1&muted=1&loop=1&background=1";
+
+    filas.forEach((linea, i) => {
+      // i < 3 asegura que tome los primeros 3 videos del Excel
+      if (i < 3 && linea.trim() !== "") { 
+        // CAMBIO CLAVE: Usamos punto y coma para separar, común en nuestra región
+        const datos = linea.split(';'); 
+        
+        // Si datos tiene una sola columna, intentamos separar por coma normal
+        const celdas = datos.length > 1 ? datos : linea.split(',');
+
+        const nombrePareja = celdas[0] ? celdas[0].trim() : "Pareja Panorámica";
+        const linkVideo = celdas[1] ? celdas[1].trim() : "";
+        const ubicacion = celdas[2] ? celdas[2].trim() : "";
+
+        if (videos[i] && linkVideo) {
+          const videoId = linkVideo.replace(/\/$/, "").split('/').pop();
+          videos[i].src = `https://galleries.vidflow.co/videos/${videoId}?${params}`;
+          nombres[i].innerText = nombrePareja;
+          lugares[i].innerText = ubicacion;
+        }
+      }
+    });
+  })
+  .catch(err => console.error("Error de conexión con Sheets:", err));
+</script>	
 <script>
 const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQNH4TkBNPHsnCYZivN_Qozrbah2fqYaRkqHyx46uSvjeCzriExLWJymoeHYszdoZMD1RMofL7wQ-ce/pub?output=csv';
 
