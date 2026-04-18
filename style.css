@@ -27,15 +27,38 @@ h1, h2, h3 {
     overflow: hidden;
 }
 .hero-video {
+	width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cambia a 'contain' solo para probar, pero 'cover' es el correcto si ajustamos el contenedor */
     position: absolute;
     top: 50%;
     left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
     transform: translate(-50%, -50%);
     z-index: -1;
+}
+
+/* VIDEO Escritorio */
+.mobile-only { display: none !important; }
+.desktop-only { display: block !important; }
+
+/* VIDEO Móvil */
+@media (max-width: 768px) {
+    .desktop-only { display: none !important; }
+    .mobile-only { 
+        display: block !important;
+        object-fit: cover;
+	}	
+	.hero {
+        height: 100dvh; /* Altura dinámica para evitar que la barra de Safari lo tape */
+    }
+
+    .hero-video {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important; 
+        /* Si quieres ver las líneas de colores para calibrar, cambia temporalmente 
+           'cover' por 'contain' y verás el video completo con barras negras laterales. */
+    }
 }
 
 .hero-overlay {
@@ -313,13 +336,12 @@ h1, h2, h3 {
 	
 }
 
-
-/* Ajuste para que en celulares no toque los bordes */
 @media (max-width: 768px) {
     .hero-logo {
         max-width: 80%;    /* En móvil, que use máximo el 80% del ancho del cel */
     }
 }
+
 @media (max-width: 768px) {
     .header-container {
         flex-direction: column; /* Alinea logo y menú uno sobre otro */
@@ -339,6 +361,7 @@ h1, h2, h3 {
         letter-spacing: 2px;
     }
 }
+
 
 
 /* ============================================
@@ -373,8 +396,8 @@ h1, h2, h3 {
 }
 
 .block-text h2 {
-    font-family: 'Cormorant Garamond', serif; cualquiercosa
-    font-size: 3000px;
+    font-family: 'Cormorant Garamond', serif; !important
+    font-size: 30px;
     letter-spacing: 2px;
     margin-bottom: 30px;
     color: #0a0a0a;
@@ -1000,243 +1023,367 @@ h1, h2, h3 {
                      NOSOTROS
    ============================================ */
 
-
-
-/* Contenedor de la Máscara */
-.parallax-mask {
-    width: 100%; /* Corregido de 120% a 100% para evitar scroll horizontal innecesario */
-    height: 80vh; 
-    overflow: hidden;
-    position: relative;
-    background-color: #FFFFFF;
-	margin-bottom: 20px;
-    margin: 0; 
+:root {
+    --bg-color: #ffffff;
+    --text-main: #1a1a1a;    /* Negro editorial */
+    --text-muted: #666666;   /* Gris para párrafos */
+    --text-light: #999999;   /* Gris para detalles */
+    --font-serif: 'Cormorant Garamond', serif;
+    --font-sans: 'Montserrat', sans-serif;
+    --line-height: 1.8;
 }
 
-
-/* La imagen dentro de la máscara */
-.parallax-bg {
-    height: 130%;
-    width: 100%;
-    position: absolute;
-    top: -15%;
-    background-image: url('assets/img/nosotros1.jpg');
-    background-size: 55vw auto; 
-    background-attachment: fixed;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-color: #ffffff;	
+.about-section {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    padding: 160px 5% 100px 5%; /* Más aire arriba por el header */
 }
 
-
-.page-container {
-	background-color: #ffffff !important;
-    max-width: 1200px; /* Ajusta este valor según qué tan ancho sea el index */
-    margin: 0 auto;    /* Esto centra el contenedor en la pantalla */
-	padding: 0 10px;
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
-/* Ajustes de Secciones de Texto */
-.about-intro-text, 
-.about-footer-text, 
-.team-container {
-    background-color: #ffffff; /* Fondo blanco */
-    padding: 50px 0;
-    display: flex;
-    justify-content: center;
+/* --- INTRODUCCIÓN --- */
+
+.about-intro {
+    margin-bottom: 40px;
 }
 
-/* Títulos con la fuente correcta: Cormorant Garamond */
-.about-intro-text h2, 
-.team-container h2, 
-.about-footer-text h2 {
-    color: #0a0a0a;
-    font-family: 'Cormorant Garamond', serif; 
-    font-size: 35px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+.section-title {
+    margin-bottom: 50px;
+    text-align: center;
+	font-family: 'Cormorant Garamond', serif;
+	font-weight: 400;
+	font-size: 35px;
+	color: #1a1a1a;
+	
 }
 
-/* Letra Capital con Cormorant Garamond */
-.drop-cap::first-letter {
-    color: #0a0a0a; 
-    font-family: 'Cormorant Garamond', serif; 
-    float: left;
-    font-size: 5rem;
-    line-height: 0.8;
-    margin-right: 15px;
-    margin-top: 5px;
+.intro-text {
+	font-family: 'Cormorant Garamond', serif;
+    max-width: 850px;
+    margin: 0 auto;
+	text-align: left;
+    font-size: 18px;
+    color: var(--text-main);
+}
+
+/* Letra Capital Editorial */
+
+.intro-text p:first-of-type::first-letter {
+    font-family: var(--font-serif);
+    font-size: 5.2rem;    /* Tamaño grande e impactante */
+    float: left;          /* Hace que el texto rodee la letra */
+    margin-right: 12px;   /* Espacio entre la E y las palabras */
+    margin-top: 6px;      /* Ajuste fino para alinear el tope de la E con el texto */
+    line-height: 0.85;    /* Crucial para que no deje un hueco gigante debajo */
+    color: var(--text-main);
     font-weight: 400;
 }
 
-/* Bloque de Equipo 50/50 */
-.team-container .work-block {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-	min-height: 80vh;
-    align-items: center;
-    gap: 0;
-    overflow: hidden;
-    background-color: #ffffff;
-    max-width: 100%; 
+/* --- CONTROLES SOMOS ALEJO y CAMI --- */
+
+.intro-text p {
+    margin-bottom: 25px;
+    text-align: left;
 }
 
-.team-container .block-gallery {
-    height: 600px; 
+.highlight {
+    font-style: italic;
+	font-size: 4rem;
+    color: var(--text-light);
+    display: block;
+    margin-top: 40px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+.intro-content-wrapper {
+    max-width: 650px; /* Controla qué tan ancho es el bloque de texto */
+    margin: 0 auto 60px auto; /* Centra el bloque y le da espacio con la foto de abajo */
+    padding: 0 20px; /* Margen de seguridad para móviles muy pequeños */
+}
+
+.intro-text p {
+    text-align: left; /* Para que coincida con la estética de la imagen que mostraste */
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+/* Ajuste para que la letra capital no rompa el centrado si decides usarla */
+.intro-text p:first-of-type::first-letter {
+    float: left; 
+    display: block;
+    font-size: 5rem;
+    margin-bottom: 10px;
+}
+
+/* --- MÁSCARAS DE IMAGEN --- */
+.image-mask {
     width: 100%;
+    position: relative;
     overflow: hidden;
+    background-color: #f9f9f9;
 }
 
-.team-container .block-gallery img {
+/* LA VENTANA (FOTO PRINCIPAL) */
+.parallax-photo {
+    padding-top: 100% !important; /* Controla el alto de la "ventana" */
+    margin-top: 10px;
+}
+
+.parallax-photo img {
+    height: 100% !important; /* La foto es más alta que el hueco */
+    width: 100% !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    transition: none !important; /* Vital para que el JS no pelee con el CSS */
+    will-change: transform;
+}
+
+/* FOTOS DE PERFIL (ALEJO & CAMILA) */
+
+.profile .image-mask {
+    padding-top: 100% !important; /* Formato vertical */
+}
+
+.profile .image-mask img {
+    height: 100% !important; /* Estas no se mueven, llenan el 100% */
+    width: 100% !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    transition: transform 0.8s ease; /* Zoom suave al pasar el mouse */
+}
+
+.profile .image-mask:hover img {
+    transform: scale(1.05);
+}
+
+/* Fotos de Perfil: Verticales */
+
+.profile .image-mask {
+    padding-top: 100%; /* Reemplazo de aspect-ratio 2:3 o 3:4 */
+}
+
+.image-mask img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; 
-    object-position: center;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.team-container .block-text {
-    padding: 60px 80px; /* Cambiamos % por px para evitar que se "coma" el texto */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-	align-items: center;
-    text-align: center;    /* Cambiamos a left para un look más editorial y balanceado */
-    width: 100%;
-    box-sizing: border-box; /* Crucial para que el padding no sume al ancho total */
+.image-mask:hover img {
+    transform: scale(1.05);
 }
 
-.team-container .block-text h2 {
-    text-align: center;    /* Alineación consistente con el párrafo */
-    margin-bottom: 25px;
-    width: 100%;
-    letter-spacing: 5px; /* Ajusta según tu gusto, pero mantén el alineamiento */
+/* --- GRID DE ROSTROS --- */
+
+.faces-grid {
+    margin-top: 50px;
+}
+
+.grid-title {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 80px;
+    letter-spacing: 2px;
+    font-style: normal;
+	font-weight: 400;
+	text-transform: uppercase;
+	color: #1a1a1a;
 }
 
 .profile {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 50% foto, 50% texto */
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
     align-items: center;
-    gap: 0; /* Sin espacio entre ellos para un look editorial */
-    margin-bottom: 0; /* Pegados si quieres, o añade 80px para separar bloques */
+    margin-bottom: 120px;
+	
 }
 
-/* Ajuste de la imagen para que llene su mitad */
-.profile .block-gallery {
-    height: 100%;
-    min-height: 600px; /* Altura visual impactante */
+.profile h4 {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: var(--text-main);
+}
+.about-footer {
+    text-align: center;    /* Centra el texto (h3) y el párrafo (p) */
+    margin-top: 50px;     /* Espacio con la sección de arriba */
+    border-top: 1px solid #eee; /* La línea divisoria sutil */
+    padding-top: 40px;     /* Espacio entre la línea y el título */
+    width: 100%;           /* Asegura que ocupe todo el ancho para poder centrar */
 }
 
-.profile .block-gallery img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Clave para que la foto no se deforme */
+.profile-info p {
+	font-family: 'Cormorant Garamond', serif;
+	font-size: 18px;
+    max-width: 450px; /* Evita que las líneas de texto sean demasiado largas */
+    line-height: 1.8;  /* Dale aire entre líneas para que sea legible y elegante */
+	color: #1a1a1a;
 }
 
-/* Ajuste del texto al lado de la foto */
-.profile .block-text {
-    padding: 10% 12%; /* Aire interno para que el texto respire */
-    text-align: left; /* Alineado a la izquierda para Alejo */
+.about-footer h3 {
+    font-family: var(--font-serif);
+    font-size: 38px;       /* El tamaño que ajustamos antes */
+    margin-bottom: 15px;
+    display: block;        /* Asegura que se comporte como bloque para centrarse */
+	text-transform: uppercase;
+	font-weight: 400;
+	color: #1a1a1a;
 }
 
-.tagline {
-    font-family: 'Cormorant Garamond', serif !important;
-    font-size: 18px !important; /* Un poco más grande para destacar */
-    font-style: normal !important; /* Activa la cursiva */
-	letter-spacing: 2px;
-    color: #4A4A4A !important;
-    line-height: 1.2 !important;
-    text-align: center !important; 
-    margin-top: 10px !important; /* Reduce el espacio con el título */
+.about-footer p {
+    font-size: 20px;
+	font-family: var(--font-serif);
+	font-style: italic;
+    color: #1a1a1a;
+    max-width: 600px;      /* Limitamos el ancho para que no sea una línea eterna */
+    margin: 0 auto;        /* ¡CLAVE! Centra el bloque del párrafo si tiene max-width */
+}
+/* Esto cambia el color SOLO de los nombres en los perfiles */
+.profile-info h4 {
+    color: #1a1a1a !important; /* O usa var(--text-main) si prefieres la variable */
+    font-family: 'Cormorant Garamond', serif;
+	font-weight: 400;
+    font-size: 35px !important;
+    margin-bottom: 20px;
+	
+}
+/* Esto ajusta el contenedor de texto de Camila */
+.profile.camila .profile-info {
+    text-align: right; /* Alinea el h4 (título) */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* ¡ESTA ES LA CLAVE! Empuja todo hacia la derecha */
+    padding-right: 40px; /* Aquí controlas qué tan cerca queda de la foto */
+	
+}
+
+/* Esto ajusta el párrafo de Camila */
+.profile.camila .profile-info p {
+    text-align: right;
+    max-width: 450px; /* Evita que las líneas sean muy largas */
+    margin-right: 0;  /* Asegura que no tenga margen a la derecha */
+    margin-left: auto; /* Empuja el bloque de texto contra el borde derecho */
+}
+.profile-info h4 {
+    text-transform: uppercase; /* ¡Con la 's'! */
+    letter-spacing: 2px;       /* Un toque extra de elegancia */
+	font-size: 80px;
+	text-transform: uppercase;  /* Mayúsculas corregidas */
+    letter-spacing: 4px;        /* Espaciado entre letras pro */
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+/* SEPARADOR DE SECCIONES */
+.spacer-lg {
+    height: 40px; /* Ajusta este valor según qué tan grande quieras el espacio */
     width: 100%;
     display: block;
-	padding-bottom: 10%;
-	}
+    clear: both;
+	border-top: 1px solid #eee; /* La línea divisoria sutil */
+    padding-top: 0px;     /* Espacio entre la línea y el título */
+}
 
-/* --- RESPONSIVE --- */
-
+/* Ajuste para que en móvil el espacio no sea tan exagerado */
 @media (max-width: 768px) {
-	
-    .parallax-mask {
-        height: 80vh !important;
-		background-color: #ffffff;
-		margin-bottom: 20px !important;
-    }
-	
-    .parallax-bg {
-        background-attachment: scroll !important; /* Evita errores en iOS */
-        background-position: center center !important;
-        background-size: cover !important;
-        height: 120% !important; /* Dale un poco más de altura que el contenedor */
-        top: 50% !important;
-        left: 50% !important;
-        transform: translate(-50%, -50%) !important;
-        position: absolute;
-    }
-	
-    .team-container .work-block {
-        grid-template-columns: 1fr; /* Una columna en móvil */
-    }
-
-    .reverse-desktop {
-        display: flex;
-        flex-direction: column; 
-    }
-    
-    .team-container .block-gallery {
-        height: 300px; /* Foto más corta en móvil */
-    }
-
-	.title-margin {
-    margin-top: 80px !important;
-	margin-bottom: 10px !important;
-	}
-	
-	.about-intro-text {
-        /* Aumentamos el margen lateral. 
-           El primer valor (30px) es arriba/abajo, 
-           el segundo (40px) es izquierda/derecha. */
-        padding: 10px 15px !important;
-        display: block;
-    }
-
-    .about-intro-text p {
-        width: 100%;      /* Que use todo el espacio permitido por el padding del padre */
-        max-width: 100%;  /* Reseteamos el max-width de la versión web */
-        text-align: justify;
-		margin-bottom: 100px !important;
-	}
-	
-    .profile {
-        grid-template-columns: 1fr;
-    }
-	
-    .profile .block-gallery {
-        min-height: 400px;
-    }
-	
-    .reverse-desktop {
-        display: flex;
-        flex-direction: column; /* Foto arriba, texto abajo en móvil siempre */
-    }
-	
-    .profile.camila .block-gallery {
-        order: 1;
-    }
-	
-    .profile.camila .block-text {
-        order: 2;
-    } 
-.about-footer-text {
-        /* El primer valor (40px) es aire arriba y abajo */
-        /* El segundo valor (30px) es el que aleja el texto de los bordes laterales */
-        padding: 40px 30px !important; 
-        box-sizing: border-box; /* Esto asegura que el padding no ensanche la pantalla */
-    }
-
-    .about-footer-text p {
-        width: 100% !important;
-        max-width: 100% !important;
-        text-align: justify; /* O center, según prefieras */
-        margin-bottom: 25px !important; /* Espacio entre los dos párrafos */
+    .spacer-lg {
+        height: 60px;
     }
 }
+/* --- RESPONSIVE PARA MÓVIL --- */
+
+@media (max-width: 768px) {
+    
+    /* 1. Hacemos que la rejilla sea de 1 sola columna */
+    .profile {
+        grid-template-columns: 1fr !important; /* Una sola columna */
+        gap: 30px; /* Menos espacio entre foto y texto */
+        margin-bottom: 80px;
+    }
+
+    /* 2. Ajustamos el orden para que siempre vaya Foto -> Texto */
+    .profile.camila {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .profile.camila .image-mask {
+        order: -1; /* Sube la foto de Camila arriba del texto */
+    }
+
+    /* 3. Limpiamos paddings de texto que pusimos para laptop */
+    .profile-info {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        text-align: center; /* Centramos el texto para un look más móvil */
+		color: var(--text-muted);
+    }
+
+    /* 4. Ajustamos tamaños de letra para que no sean gigantes */
+    .section-title {
+        font-size: 32px;
+    }
+    
+    .grid-title {
+        font-size: 20px;
+        margin-bottom: 40px;
+    }
+
+    /* 5. La foto parallax: que no sea tan alta en móvil */
+    .parallax-photo {
+        padding-top: 100% !important; /* Más cuadrada para que no ocupe toda la pantalla */
+    }
+	/* 1. Ajustamos el tamaño del nombre para que no se desborde */
+    .profile-info h4 {
+        font-size: 35px !important; /* Un tamaño más seguro para celulares */
+        letter-spacing: 2px;        /* Reducimos un poco el tracking */
+        text-align: center;         /* Centrado se ve mejor en vertical */
+        margin-bottom: 15px;
+        width: 100%;                /* Ocupa todo el ancho disponible */
+    }
+
+    /* 2. Ajustamos el cuerpo de texto para que no se desplace */
+    .profile.camila .profile-info,
+    .profile.alejo .profile-info {
+        align-items: center;        /* Centramos el bloque en móvil */
+        text-align: center;         /* Texto centrado para lectura vertical */
+        padding: 0 20px;            /* Margen de seguridad a los lados */
+    }
+
+    .profile.camila .profile-info p,
+    .profile.alejo .profile-info p {
+        text-align: center;         /* El párrafo también centrado */
+        max-width: 100%;            /* Que use todo el ancho del cel */
+        margin: 0 auto !important;  /* Centrado perfecto */
+        font-size: 18px;            /* Un pelín más pequeño para legibilidad */
+    }
+
+    /* 3. Evitamos que Alejandro se salga */
+    .profile {
+        grid-template-columns: 1fr !important; /* Una sola columna */
+        overflow: hidden;                      /* Evita scroll horizontal */
+    }
+}
+.contact-page, .about-section {
+    display: block; /* Fuerza el flujo normal */
+    overflow: hidden; /* Corta cualquier elemento invisible que flote abajo */
+}
+/* FUERA DE CUALQUIER MEDIA QUERY (Al final de todo) */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+    height: auto;
+    min-height: 100%;
