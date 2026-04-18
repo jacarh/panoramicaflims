@@ -20,6 +20,7 @@ h1, h2, h3 {
 .hero {
     position: relative;
     height: 100dvh;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1156,17 +1157,20 @@ h1, h2, h3 {
 @media (max-width: 768px) {
 	
     .parallax-mask {
-        height: 60vh;
+        height: 80vh !important;
 		background-color: #ffffff;
 		margin-bottom: 20px !important;
     }
 	
     .parallax-bg {
-        background-attachment: scroll;
-		background-position: center center;
-        height: 100%; 
-        top: 0;
-        background-size: cover;
+        background-attachment: scroll !important; /* Evita errores en iOS */
+        background-position: center center !important;
+        background-size: cover !important;
+        height: 120% !important; /* Dale un poco más de altura que el contenedor */
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        position: absolute;
     }
 	
     .team-container .work-block {
