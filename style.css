@@ -80,12 +80,13 @@ h1, h2, h3 {
 	font-style: normal;
 	font-weight: 400;
 	color: #FFFFFF;
+	margin-bottom: 80px;
 }
 
 /* Contenedor del premio */
 
 .award-hero {
-    margin-top: 40px;
+    margin-top: 80px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -109,6 +110,8 @@ h1, h2, h3 {
     transform: translateY(-20px);
     pointer-events: none;
 }
+
+
 /* ============================================
                       HEADER
    ============================================ */
