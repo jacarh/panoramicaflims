@@ -73,6 +73,13 @@ h1, h2, h3 {
 	z-index: 1;
 	transition: opacity 0.1s linear; 
     will-change: opacity;
+	display: flex;
+    flex-direction: column;
+    justify-content: space-evenly; /* Aquí está la magia: distribuye espacio igual arriba, en medio y abajo */
+    align-items: center;
+    height: 50vh; /* O el alto que tenga tu video, por ejemplo 100vh */
+    padding: 0; /* Quitamos paddings que puedan estirar el video */
+    box-sizing: border-box;
 }
 
 .hero-content h1 {
@@ -80,13 +87,13 @@ h1, h2, h3 {
 	font-style: normal;
 	font-weight: 400;
 	color: #FFFFFF;
-	margin-bottom: 80px;
+	margin-bottom: 0px;
 }
 
 /* Contenedor del premio */
 
 .award-hero {
-    margin-top: 80px;
+    margin-top: 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -100,7 +107,7 @@ h1, h2, h3 {
     width: 150px; /* Ajusta según el diseño del laurel */
     height: auto;
     filter: brightness(0) invert(1); /* Lo fuerza a blanco puro si el SVG es negro */
-	margin-bottom: 40px;
+	margin-bottom: 0px;
 }
 
 /* Lógica para que desaparezca al hacer scroll */
