@@ -474,6 +474,40 @@ h1, h2, h3 {
     transform: translate(-50%, -50%);
     pointer-events: none; /* Evita que el usuario pause el video por error */
 }
+.square-2 {
+    background-image: url('assets/img/vidstill02.jpg');
+    background-size: cover;     
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.square-3 {
+    background-image: url('assets/img/vidstill03.jpg');
+    background-size: cover;     
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.square-4 {
+    background-image: url('assets/img/vidstill04.jpg');
+    background-size: cover;     
+    background-position: center;
+    background-repeat: no-repeat;
+}
+/* Para que el video nativo en mobile llene el cuadro */
+.video-preview-mobile {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* El truco del PosterFrame para Desktop (Vimeo) */
+/* Aplicamos una imagen de fondo al contenedor de la versión desktop */
+.desktop-only {
+    background-image: url('assets/img/poster-video-desktop.jpg');
+    background-size: cover;
+    background-position: center;
+    background-color: #000;
+}
 
 /* RESPONSIVE (MÓVIL) */
 
